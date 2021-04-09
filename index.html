@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ICSE Percentage Marks Calculator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+        <meta name="author" content="Shashank Shekhar" />
+        <meta name="author" content="https://www.facebook.com/soloShekhu" />
+        <meta name="description" content="Calculate your ICSE board exam percentage marks." />
+        <meta name="theme-color" content="#4a43de" />
+        <meta property="og:title" content="ICSE Percentage Marks Calculator" />
+        <meta property="og:url" content="https://www.icseresult.tk/" />
+        <meta property="og:image" content="assets/img/icse.png" />
+        <meta property="og:width" content="100" />
+        <meta property="og:height" content="100" />
+        <meta property="og:description" content="Calculate your ICSE board exam percentage marks." />
+        <link rel="icon" type="image/png" href="assets/img/icse.png" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <style>
+            form div.form-group
+            {
+                margin-bottom: 3vh;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div class="container bg-dark text-white mb-0">
+            <h2 class="jumbotron bg-dark text-center mb-0">ICSE Percentage Marks Calculator</h2>
+        </div>
+
+        <div class="container px-0 mb-0" style="height: 100vh;">
+            <div class="jumbotron text-center h-100 mb-0 rounded-0">
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title font-weight-bolder">Calculate 10th Percentage</h5>
+                                <hr />
+                                <div class="card-text text-left mt-4">
+                                    <div class="alert alert-danger" style="display: none;">Enter value between 0 and 100</div>
+                                    <form id="matric-marks-form">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-7"><label class="font-weight-bolder">Percentage Marks of English : </label></div>
+                                                <div class="col-sm-5"><input class="form-control english-marks" name="english" type="text" placeholder="English" required /></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-7"><label class="font-weight-bolder">Percentage Marks of Hindi : </label></div>
+                                                <div class="col-sm-5"><input class="form-control hindi-marks" name="hindi" type="text" placeholder="Hindi" required /></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-7"><label class="font-weight-bolder">Percentage Marks of Mathematics : </label></div>
+                                                <div class="col-sm-5"><input class="form-control maths-marks" name="mathematics" type="text" placeholder="Mathematics" required /></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-7"><label class="font-weight-bolder">Percentage Marks of Science : </label></div>
+                                                <div class="col-sm-5"><input class="form-control science-marks" name="science" type="text" placeholder="Science" required /></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-7"><label class="font-weight-bolder">Percentage Marks of HCG : </label></div>
+                                                <div class="col-sm-5"><input class="form-control hcg-marks" name="hcg" type="text" placeholder="HCG" required /></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-7"><label class="font-weight-bolder">Percentage Marks of Commerce/Computer/Economics/Home Science : </label></div>
+                                                <div class="col-sm-5"><input class="form-control extra-paper-marks" name="extra" type="text" placeholder="Extra" required /></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group text-center">
+                                            <button class="btn btn-md btn-info" type="submit">Calculate Percentage</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+        <script type="text/javascript">
+            var flag=true;
+            var value=null;
+            $(document).on('keyup', 'input', function(){
+                value=$(this).val().trim();
+                if(value>=0 && value<=100)
+                {
+                    $('.alert').hide();
+                    value=true;
+                }
+                else
+                {
+                    $('.alert').fadeIn();
+                    value=false;
+                    $(this).val('');
+                }
+            });
+
+            $(document).on('submit', '#matric-marks-form', function(e){
+                e.preventDefault();
+
+                if(!flag)
+                    return;
+
+                var fd=new FormData(this);
+
+                if(parseFloat(fd.get('english'))<33.0)
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Sorry',
+                        text: 'Pass certificate has not been awarded',
+                    }).then(() => {
+                        $('#matric-marks-form').trigger('reset');
+                    });
+                else
+                {
+                    var count=0;
+                    if(parseFloat(fd.get('hindi'))<33.0)
+                        count++;
+                    if(parseFloat(fd.get('mathematics'))<33.0)
+                        count++;
+                    if(parseFloat(fd.get('science'))<33.0)
+                        count++;
+                    if(parseFloat(fd.get('hcg'))<33.0)
+                        count++;
+                    if(parseFloat(fd.get('extra'))<33.0)
+                        count++;
+                    if(count>=2)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Sorry',
+                            text: 'Pass certificate has not been awarde1d',
+                        }).then(() => {
+                            $('#matric-marks-form').trigger('reset');
+                        });
+                    else
+                    {
+                        var obj=[]
+                        for(var pair of fd.entries())
+                        {
+                            if(pair[0]!='english')
+                            obj.push({
+                                subject: pair[0],
+                                marks: parseFloat(pair[1]),
+                            });
+                        }
+
+                        obj.sort((a, b) => { return b.marks - a.marks; });
+
+                        var total=parseFloat(fd.get('english'))+obj[0].marks+obj[1].marks+obj[2].marks+obj[3].marks;
+                        var percentage=total/5;
+
+                        console.log(obj);
+
+                        Swal.fire({
+                                icon: 'success',
+                                title: 'Congo',
+                                text: `You secured ${percentage}% in ENGLISH, ${obj[0].subject.toUpperCase()}, ${obj[1].subject.toUpperCase()}, ${obj[2].subject.toUpperCase()}, ${obj[3].subject.toUpperCase()}`,
+                                backdrop: 'rgba(0, 0, 0, 0.5) url(party2.gif) repeat'
+                            }).then(() => {
+                                $('#matric-marks-form').trigger('reset');
+                            }); 
+                    }            
+                }
+            });
+        </script>
+    </body>
+</html>
