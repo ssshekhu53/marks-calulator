@@ -1,21 +1,12 @@
 var flag=true;
 // var value=null;
 var passingMarks=33.0;
-$(document).on('keyup', 'input', function(e){
-    value=e.which || e.keyCode;
-    // alert(e.keyCode);
-    if((value>=65 && value<=90) || )
-    {
-        $('.alert').hide();
-        // value=true;
-    }
-    else if(value!=8)
-    {
-        $('.alert').fadeIn();
-        // value=false;
-        $(this).val('');
-    }
-});
+function isNumKey(e){
+    var charCode = (e.which) ? e.which : e.keyCode;
+    if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
 
 $(document).on('submit', '#matric-marks-form', function(e){
     e.preventDefault();
