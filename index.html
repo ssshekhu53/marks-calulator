@@ -25,69 +25,71 @@
     </head>
     <body>
         
-        <div class="container bg-dark text-white mb-0">
+        <div class="container-fluid bg-dark text-white mb-0">
             <h2 class="jumbotron bg-dark text-center mb-0">ICSE Percentage Marks Calculator</h2>
         </div>
 
-        <div class="container px-0 mb-0" style="height: 100vh;">
-            <div class="jumbotron text-center h-100 mb-0 rounded-0">
-                <div class="row">
-                    <div class="col-sm-3"></div>
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title font-weight-bolder">Calculate 10th Percentage</h5>
-                                <hr />
-                                <div class="card-text text-left mt-4">
-                                    <div class="alert alert-danger" style="display: none;">Enter value between 0 and 100</div>
-                                    <form id="matric-marks-form">
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-sm-7"><label class="font-weight-bolder">Percentage Marks of English : </label></div>
-                                                <div class="col-sm-5"><input class="form-control english-marks" name="english" type="text" placeholder="English" onkeypress="return isNumKey(event)" required /></div>
-                                            </div>
+        <div class="container-fluid bg-light">
+            <div class="row py-5">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-center font-weight-bolder">Calculate 10th Percentage</h5>
+                            <hr />
+                            <div class="card-text text-left mt-4">
+                                <div class="alert alert-danger" style="display: none;">Enter value between 0 and 100</div>
+                                <form id="matric-marks-form">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-7"><label class="font-weight-bolder">Percentage Marks of English : </label></div>
+                                            <div class="col-sm-5"><input class="form-control english-marks" name="english" type="text" placeholder="English" onkeypress="return isNumKey(event)" required /></div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-sm-7"><label class="font-weight-bolder">Percentage Marks of Hindi : </label></div>
-                                                <div class="col-sm-5"><input class="form-control hindi-marks" name="hindi" type="text" placeholder="Hindi" onkeypress="return isNumKey(event)" required /></div>
-                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-7"><label class="font-weight-bolder">Percentage Marks of Hindi : </label></div>
+                                            <div class="col-sm-5"><input class="form-control hindi-marks" name="hindi" type="text" placeholder="Hindi" onkeypress="return isNumKey(event)" required /></div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-sm-7"><label class="font-weight-bolder">Percentage Marks of Mathematics : </label></div>
-                                                <div class="col-sm-5"><input class="form-control maths-marks" name="mathematics" type="text" placeholder="Mathematics" onkeypress="return isNumKey(event)" required /></div>
-                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-7"><label class="font-weight-bolder">Percentage Marks of Mathematics : </label></div>
+                                            <div class="col-sm-5"><input class="form-control maths-marks" name="mathematics" type="text" placeholder="Mathematics" onkeypress="return isNumKey(event)" required /></div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-sm-7"><label class="font-weight-bolder">Percentage Marks of Science : </label></div>
-                                                <div class="col-sm-5"><input class="form-control science-marks" name="science" type="text" placeholder="Science" onkeypress="return isNumKey(event)" required /></div>
-                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-7"><label class="font-weight-bolder">Percentage Marks of Science : </label></div>
+                                            <div class="col-sm-5"><input class="form-control science-marks" name="science" type="text" placeholder="Science" onkeypress="return isNumKey(event)" required /></div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-sm-7"><label class="font-weight-bolder">Percentage Marks of HCG : </label></div>
-                                                <div class="col-sm-5"><input class="form-control hcg-marks" name="hcg" type="text" placeholder="HCG" onkeypress="return isNumKey(event)" required /></div>
-                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-7"><label class="font-weight-bolder">Percentage Marks of HCG : </label></div>
+                                            <div class="col-sm-5"><input class="form-control hcg-marks" name="hcg" type="text" placeholder="HCG" onkeypress="return isNumKey(event)" required /></div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-sm-7"><label class="font-weight-bolder">Percentage Marks of Commerce/Computer/Economics/Home Science : </label></div>
-                                                <div class="col-sm-5"><input class="form-control extra-paper-marks" name="extra" type="text" placeholder="Extra" onkeypress="return isNumKey(event)" required /></div>
-                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-7"><label class="font-weight-bolder">Percentage Marks of Commerce/Computer/Economics/Home Science : </label></div>
+                                            <div class="col-sm-5"><input class="form-control extra-paper-marks" name="extra" type="text" placeholder="Extra" onkeypress="return isNumKey(event)" required /></div>
                                         </div>
-                                        <div class="form-group text-center">
-                                            <button class="btn btn-md btn-info" type="submit">Calculate Percentage</button>
-                                        </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <button class="btn btn-md btn-info" type="submit">Calculate Percentage</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-3"></div>
                 </div>
+                <div class="col-sm-3"></div>
             </div>
+        </div>
+
+        <div class="footer">
+            <div class="font-weight-bolder">Made with <span class="text-danger" style="font-size: 25px;">&hearts;</span> by <a href="https://www.stackshekhu.cf/" target="_blank">SoloSheku</a></div>
         </div>
 
 
