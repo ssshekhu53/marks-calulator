@@ -67,7 +67,7 @@ $(document).on('submit', '#matric-marks-form', function(e){
             Swal.fire({
                     icon: 'success',
                     title: 'Congo',
-                    text: `You secured ${percentage}% in ENGLISH, ${obj[0].subject.toUpperCase()}, ${obj[1].subject.toUpperCase()}, ${obj[2].subject.toUpperCase()}, ${obj[3].subject.toUpperCase()}`,
+                    html: `You secured <strong>${percentage}% (${total} out of 500)</strong> in ENGLISH, ${obj[0].subject.toUpperCase()}, ${obj[1].subject.toUpperCase()}, ${obj[2].subject.toUpperCase()}, ${obj[3].subject.toUpperCase()}`,
                     backdrop: 'rgba(0, 0, 0, 0.5) url(party2.gif) repeat'
                 }).then(() => {
                     $('#matric-marks-form').trigger('reset');
