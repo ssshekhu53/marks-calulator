@@ -15,6 +15,7 @@
         <meta property="og:description" content="Calculate your ICSE board exam percentage marks." />
         <link rel="icon" type="image/png" href="https://ssshekhu53.github.io/marks-calulator/assets/img/icse.png" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
         <style>
             form div.form-group
             {
@@ -92,92 +93,6 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-
-        <script type="text/javascript">
-            var flag=true;
-            var value=null;
-            $(document).on('keyup', 'input', function(){
-                value=$(this).val().trim();
-                if(value>=0 && value<=100)
-                {
-                    $('.alert').hide();
-                    value=true;
-                }
-                else
-                {
-                    $('.alert').fadeIn();
-                    value=false;
-                    $(this).val('');
-                }
-            });
-
-            $(document).on('submit', '#matric-marks-form', function(e){
-                e.preventDefault();
-
-                if(!flag)
-                    return;
-
-                var fd=new FormData(this);
-
-                if(parseFloat(fd.get('english'))<33.0)
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Sorry',
-                        text: 'Pass certificate has not been awarded',
-                    }).then(() => {
-                        $('#matric-marks-form').trigger('reset');
-                    });
-                else
-                {
-                    var count=0;
-                    if(parseFloat(fd.get('hindi'))<33.0)
-                        count++;
-                    if(parseFloat(fd.get('mathematics'))<33.0)
-                        count++;
-                    if(parseFloat(fd.get('science'))<33.0)
-                        count++;
-                    if(parseFloat(fd.get('hcg'))<33.0)
-                        count++;
-                    if(parseFloat(fd.get('extra'))<33.0)
-                        count++;
-                    if(count>=2)
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Sorry',
-                            text: 'Pass certificate has not been awarde1d',
-                        }).then(() => {
-                            $('#matric-marks-form').trigger('reset');
-                        });
-                    else
-                    {
-                        var obj=[]
-                        for(var pair of fd.entries())
-                        {
-                            if(pair[0]!='english')
-                            obj.push({
-                                subject: pair[0],
-                                marks: parseFloat(pair[1]),
-                            });
-                        }
-
-                        obj.sort((a, b) => { return b.marks - a.marks; });
-
-                        var total=parseFloat(fd.get('english'))+obj[0].marks+obj[1].marks+obj[2].marks+obj[3].marks;
-                        var percentage=total/5;
-
-                        console.log(obj);
-
-                        Swal.fire({
-                                icon: 'success',
-                                title: 'Congo',
-                                text: `You secured ${percentage}% in ENGLISH, ${obj[0].subject.toUpperCase()}, ${obj[1].subject.toUpperCase()}, ${obj[2].subject.toUpperCase()}, ${obj[3].subject.toUpperCase()}`,
-                                backdrop: 'rgba(0, 0, 0, 0.5) url(party2.gif) repeat'
-                            }).then(() => {
-                                $('#matric-marks-form').trigger('reset');
-                            }); 
-                    }            
-                }
-            });
-        </script>
+        <script type="text/javascript" src="assets/js/main.js"></script>
     </body>
 </html>
